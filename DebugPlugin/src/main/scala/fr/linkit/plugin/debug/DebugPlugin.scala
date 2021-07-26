@@ -36,23 +36,13 @@ class DebugPlugin extends LinkitPlugin {
 
         //val pool       = WorkerPools.currentPool.get
         val controller = new SimpleWorkerController()
-        controller.pauseCurrentTask(5000)
+        controller.pauseCurrentTask(1000)
         val testServerConnection = getContext.getConnection("TestServer1").get
         val globalCache          = testServerConnection.network.cache
-
-        import LocalResourceFolder._
-        val resource  = getContext.getAppResources
-                .get[LocalResourceFolder](getProperty("compilation.working_dir.classes"))
-                .getEntry
-                .getRepresentation[WrappersClassResource]
 
         commandManager.register("player", new PlayerCommand(globalCache, testServerConnection.currentIdentifier))
         commandManager.register("network", new NetworkCommand(getContext.listConnections.map(_.network)))
         commandManager.register("fsa", new RemoteFSACommand(getContext))
-
-        val resources = getContext.getAppResources
-        val file      = resources.getOrOpen[LocalResourceFile]("Test.exe")
-        val folder    = resources.getOrOpen[LocalResourceFolder]("MyFolder")
 
         AppLogger.trace("Debug extension enabled.")
     }
