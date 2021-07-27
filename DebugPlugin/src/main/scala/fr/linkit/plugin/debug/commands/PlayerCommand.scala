@@ -52,7 +52,7 @@ class PlayerCommand(cacheHandler: SharedCacheManager, currentIdentifier: String)
             case "reinject" => reInjectPlayer(args.drop(1)) //remove first arg which is obviously 'update'
             case "list"   =>
                 val content = players.toArray
-                println(s"players: ${content.mkString("ListBuffer(", ", ", ")")}")
+                println(s"players: $players")
             case "desc"   => describePlayerClass()
             case _        => throw CommandException("usage: player [create|update|reinject|list|desc] [...]")
         }
