@@ -72,6 +72,7 @@ class PlayerCommand(cacheHandler: SharedCacheManager, currentIdentifier: String)
         val x      = CommandUtils.getValue("x", args).toInt
         val y      = CommandUtils.getValue("y", args).toInt
         val player = Player(id, currentIdentifier, name, x, y)
+        player.list = players
 
         //println(s"Created $player ! (identifier = $id)")
         players += player
