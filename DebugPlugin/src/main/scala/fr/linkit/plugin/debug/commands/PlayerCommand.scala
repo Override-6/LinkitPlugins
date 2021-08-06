@@ -13,11 +13,11 @@
 package fr.linkit.plugin.debug.commands
 
 import fr.linkit.api.connection.cache.SharedCacheManager
-import fr.linkit.api.connection.cache.obj.description.annotation.InvocationKind
+import fr.linkit.api.connection.cache.obj.behavior.annotation.InvocationKind
 import fr.linkit.engine.connection.cache.obj.DefaultSynchronizedObjectCenter
+import fr.linkit.engine.connection.cache.obj.behavior.{AnnotationBasedMemberBehaviorFactory, ObjectTreeDefaultBehavior, WrapperBehaviorBuilder}
 import fr.linkit.engine.connection.cache.obj.description.WrapperBehaviorBuilder.MethodControl
-import fr.linkit.engine.connection.cache.obj.description.annotation.AnnotationBasedMemberBehaviorFactory
-import fr.linkit.engine.connection.cache.obj.description.{ObjectTreeDefaultBehavior, WrapperBehaviorBuilder}
+import fr.linkit.engine.connection.cache.obj.description.ObjectTreeDefaultBehavior
 import fr.linkit.plugin.controller.cli.{CommandException, CommandExecutor, CommandUtils}
 
 import scala.collection.mutable.ListBuffer
