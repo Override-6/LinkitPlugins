@@ -34,7 +34,7 @@ class RemoteFSACommand(context: ApplicationContext) extends CommandExecutor {
                 .asInstanceOf[CentralConnection]
 
         val connection = serverConnection.getConnection(target).getOrElse(throw CommandException(s"$target is not connected."))
-        val cache = connection.network.globalCache.getCache[]
+        val cache = connection.network.globalCache.attachToCache[]
 
         order match {
             case "create" =>
