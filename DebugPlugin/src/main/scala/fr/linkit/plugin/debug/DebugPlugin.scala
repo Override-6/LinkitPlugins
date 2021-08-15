@@ -32,7 +32,7 @@ class DebugPlugin extends LinkitPlugin {
         val controller = new SimpleWorkerController()
         //controller.pauseCurrentTask(1000)
         val testServerConnection = getContext.getConnection("TestServer1").get
-        val globalCache          = testServerConnection.network.cache
+        val globalCache          = testServerConnection.network.globalCache
 
         commandManager.register("player", new PlayerCommand(globalCache, testServerConnection.currentIdentifier))
         commandManager.register("network", new NetworkCommand(getContext.listConnections.map(_.network)))
