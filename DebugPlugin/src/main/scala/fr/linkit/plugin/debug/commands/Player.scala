@@ -12,7 +12,7 @@
 
 package fr.linkit.plugin.debug.commands
 
-import fr.linkit.api.connection.cache.obj.behavior.annotation.BasicRemoteInvocationRule.BROADCAST
+import fr.linkit.api.connection.cache.obj.behavior.annotation.BasicInvocationRule.BROADCAST
 import fr.linkit.api.connection.cache.obj.behavior.annotation.{MethodControl => MC}
 
 import scala.annotation.meta.setter

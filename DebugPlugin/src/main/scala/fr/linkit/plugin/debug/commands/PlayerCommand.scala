@@ -13,7 +13,7 @@
 package fr.linkit.plugin.debug.commands
 
 import fr.linkit.api.connection.cache.SharedCacheManager
-import fr.linkit.api.connection.cache.obj.behavior.annotation.BasicRemoteInvocationRule
+import fr.linkit.api.connection.cache.obj.behavior.annotation.BasicInvocationRule
 import fr.linkit.engine.connection.cache.obj.DefaultSynchronizedObjectCenter
 import fr.linkit.engine.connection.cache.obj.behavior.WrapperBehaviorBuilder.MethodControl
 import fr.linkit.engine.connection.cache.obj.behavior.{AnnotationBasedMemberBehaviorFactory, WrapperBehaviorBuilder, WrapperBehaviorTreeBuilder}
@@ -28,7 +28,7 @@ class PlayerCommand(cacheHandler: SharedCacheManager, currentIdentifier: String)
 
     private val tree = new WrapperBehaviorTreeBuilder(AnnotationBasedMemberBehaviorFactory) {
         behaviors += new WrapperBehaviorBuilder[ListBuffer[Player]]() {
-            annotateAllMethods("+=") and "addOne" by MethodControl(BasicRemoteInvocationRule.BROADCAST, invokeOnly = true, synchronizedParams = Seq(true))
+            annotateAllMethods("+=") and "addOne" by MethodControl(BasicInvocationRule.BROADCAST, invokeOnly = true, synchronizedParams = Seq(true))
         }
     }.build
 
