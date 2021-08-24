@@ -28,7 +28,7 @@ class PlayerCommand(cacheHandler: SharedCacheManager, currentIdentifier: String)
 
     private val tree = new SynchronizedObjectBehaviorStoreBuilder(AnnotationBasedMemberBehaviorFactory) {
         behaviors += new SynchronizedObjectBehaviorBuilder[ListBuffer[Player]]() {
-            annotateAllMethods("+=") and "addOne" by new MethodControl(BasicInvocationRule.BROADCAST, invokeOnly = true)
+            annotateAllMethods("+=") and "addOne" by new MethodControl(BasicInvocationRule.BROADCAST)
         }
     }.build
 

@@ -26,7 +26,7 @@ class NetworkCommand(networks: => Iterable[Network]) extends CommandExecutor {
 
     private def genDescription(network: Network): Unit = {
         network.connection.runLater {
-            val engines      = network.listEngines
+            val engines     = network.listEngines
             val enginesName = engines.map(_.identifier).mkString(", ")
             val count       = engines.size
             val upDate      = network.startUpDate
