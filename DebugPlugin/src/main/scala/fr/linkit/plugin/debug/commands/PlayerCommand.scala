@@ -15,8 +15,8 @@ package fr.linkit.plugin.debug.commands
 import fr.linkit.api.connection.cache.SharedCacheManager
 import fr.linkit.api.connection.cache.obj.behavior.annotation.BasicInvocationRule
 import fr.linkit.engine.connection.cache.obj.DefaultSynchronizedObjectCenter
-import fr.linkit.engine.connection.cache.obj.behavior.SynchronizedObjectBehaviorBuilder.MethodControl
-import fr.linkit.engine.connection.cache.obj.behavior.{AnnotationBasedMemberBehaviorFactory, SynchronizedObjectBehaviorBuilder, SynchronizedObjectBehaviorStoreBuilder}
+import fr.linkit.engine.connection.cache.obj.behavior.ObjectBehaviorBuilder.MethodControl
+import fr.linkit.engine.connection.cache.obj.behavior.{AnnotationBasedMemberBehaviorFactory, ObjectBehaviorBuilder, ObjectBehaviorStoreBuilder}
 import fr.linkit.plugin.controller.cli.{CommandException, CommandExecutor, CommandUtils}
 
 import scala.collection.mutable.ListBuffer
@@ -26,8 +26,8 @@ class PlayerCommand(cacheHandler: SharedCacheManager, currentIdentifier: String)
     /*println("Press enter to continue...")
     new Scanner(System.in).nextLine()*/
 
-    private val tree = new SynchronizedObjectBehaviorStoreBuilder(AnnotationBasedMemberBehaviorFactory) {
-        behaviors += new SynchronizedObjectBehaviorBuilder[ListBuffer[Player]]() {
+    private val tree = new ObjectBehaviorStoreBuilder(AnnotationBasedMemberBehaviorFactory) {
+        behaviors += new ObjectBehaviorBuilder[ListBuffer[Player]]() {
             annotateAllMethods("+=") and "addOne" by new MethodControl(BasicInvocationRule.BROADCAST)
         }
     }.build
